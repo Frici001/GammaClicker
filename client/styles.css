@@ -1,0 +1,258 @@
+:root {
+    --primary-color: #ffcc00;
+    --secondary-color: #f9a825;
+    --background-color: #1e1e2e;
+    --card-bg: #2a2a40;
+    --text-color: #ffffff;
+    --button-color: #ffcc00;
+    --button-hover: #ffd740;
+    --upgrade-bg: #343450;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.header {
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.score-container {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.g-symbol {
+    color: var(--primary-color);
+    font-size: 36px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.clicker-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 200px;
+}
+
+.g-button {
+    width: 150px;
+    height: 150px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5),
+                inset 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease-in-out;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.g-button:active {
+    transform: scale(0.95);
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 204, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+    }
+}
+
+.click-effect {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-out;
+}
+
+.click-effect.show {
+    animation: float-up 0.8s forwards;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
+
+.upgrades-container {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.upgrade-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.upgrade-item {
+    background-color: var(--upgrade-bg);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s ease;
+}
+
+.upgrade-item:hover {
+    transform: translateY(-2px);
+}
+
+.upgrade-icon {
+    font-size: 32px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 204, 0, 0.2);
+    border-radius: 12px;
+}
+
+.upgrade-info {
+    flex: 1;
+}
+
+.upgrade-info h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.upgrade-info p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.price {
+    font-weight: bold;
+    color: var(--primary-color) !important;
+    margin-top: 4px;
+}
+
+.upgrade-button {
+    background-color: var(--button-color);
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.upgrade-button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+
+.upgrade-button:disabled {
+    background-color: #666;
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Оверлей подписки */
+#subscribe-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+#subscribe-overlay .overlay-content {
+  text-align: center;
+  color: var(--text-color);
+}
+#subscribe-overlay img {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+/* Медиа-запросы */
+@media (max-width: 480px) {
+    .app-container { padding: 16px; }
+    .g-button { width: 120px; height: 120px; font-size: 60px; }
+    .clicker-area { height: 160px; }
+}
