@@ -1,8 +1,8 @@
-// Инициализация Telegram Mini App
+
 let tg = window.Telegram.WebApp;
 tg.expand();
 
-// Проверка подписки на канал через ваш сервер
+
 (async function checkSub() {
   try {
     const userId = tg.initDataUnsafe.user.id;
@@ -31,7 +31,6 @@ function showSubscribeOverlay() {
   document.body.appendChild(overlay);
 }
 
-// Инициализация игровых переменных
 let gameState = {
     score: 0,
     clickValue: 1,
@@ -41,8 +40,6 @@ let gameState = {
     upgradesLevels: { click: 0, passive: 0, multiplier: 0 }
 };
 loadGameState();
-
-// DOM элементы
 const scoreElement = document.getElementById('score');
 const perClickElement = document.getElementById('per-click');
 const passiveElement = document.getElementById('passive');
@@ -54,8 +51,6 @@ const gButton = document.getElementById('g-button');
 const clickEffect = document.getElementById('click-effect');
 
 updateUI();
-
-// Слушатели
 gButton.addEventListener('click', handleClick);
 document.getElementById('buy-click-upgrade').addEventListener('click', buyClickUpgrade);
 document.getElementById('buy-passive-upgrade').addEventListener('click', buyPassiveUpgrade);
