@@ -230,7 +230,6 @@ h2 {
     transform: none;
 }
 
-/* Оверлей подписки */
 #subscribe-overlay {
   position: fixed;
   top: 0; left: 0;
@@ -250,7 +249,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Медиа-запросы */
 @media (max-width: 480px) {
     .app-container { padding: 16px; }
     .g-button { width: 120px; height: 120px; font-size: 60px; }
