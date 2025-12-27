@@ -11,7 +11,6 @@ if (!process.env.BOT_TOKEN) {
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-// Обработчик команды /start
 bot.start((ctx) => {
   ctx.reply('Привет! Нажми на кнопку ниже, чтобы начать тапать!', {
     reply_markup: {
@@ -27,7 +26,7 @@ bot.start((ctx) => {
   });
 });
 
-// Эндпоинт для проверки подписки
+
 app.post('/check-subscribe', async (req, res) => {
   const { userId } = req.body;
   try {
@@ -40,7 +39,7 @@ app.post('/check-subscribe', async (req, res) => {
   }
 });
 
-// Добавление поддержки CORS (для устранения возможных проблем с доступом)
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -50,11 +49,9 @@ app.use((req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
 
-// Запуск бота
 bot.launch().then(() => {
   console.log('Bot started');
 });
 
-// Обработка остановки бота
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
